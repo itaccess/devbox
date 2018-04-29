@@ -64,4 +64,4 @@ Plug 'flazz/vim-colorschemes'
 " Initialize plugin system
 call plug#end()
 
-source my-zsh/.vimrc.custom
+silent! source my-zsh/.vimrc.custom
