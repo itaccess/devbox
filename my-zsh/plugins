@@ -1,0 +1,5 @@
+plugins=(
+  z
+  docker
+  git
+)

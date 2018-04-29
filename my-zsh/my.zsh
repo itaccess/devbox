@@ -79,3 +79,4 @@ alias x='tmux a -d || tmux'
 
 alias vi='vim'
 
+plugins=(z git docker)
