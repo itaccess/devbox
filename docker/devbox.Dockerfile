@@ -7,13 +7,15 @@ RUN apk update && apk add \
   docker \
   build-base \
   fzf \
+  python3 \
   bind-tools \
   net-tools
 
 RUN yarn global add \
-  # sir \
-  # serve \
-  # ntl \
+  sir \
+  serve \
+  ntl \
+  gren \
   standard \
   semistandard
 
