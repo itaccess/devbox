@@ -42,6 +42,10 @@ RUN sed -i '1i''source /root/my-zsh/plugins' /root/.zshrc
 ADD .tmux.conf /root/.tmux.conf
 ADD my-zsh /root/my-zsh
 
+RUN sed -i 's/\/alpine\/.\+\/community/\/alpine\/edge\/community/' /etc/apk/repositories
+RUN apk update && apk add fzf bash
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --no-bash --no-fish --all
+
 ENV ZSH_CUSTOM=/root/my-zsh
 WORKDIR /root
 EXPOSE 80 443 2000 3000-3004 8080-8084 8443
