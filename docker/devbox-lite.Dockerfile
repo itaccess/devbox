@@ -11,16 +11,7 @@ RUN apk update && apk add \
   zsh \
   zsh-vcs \
   tmux \
-  docker \
-  # build-base \
   openssh
-
-RUN yarn global add \
-  # sir \
-  # serve \
-  # ntl \
-  standard \
-  semistandard
 
 # ADD https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim /root/.vim/autoload/plug.vim
 ADD .vimrc /root/.vimrc
@@ -42,11 +33,7 @@ RUN sed -i '1i''source /root/my-zsh/plugins' /root/.zshrc
 ADD .tmux.conf /root/.tmux.conf
 ADD my-zsh /root/my-zsh
 
-RUN sed -i 's/\/alpine\/.\+\/community/\/alpine\/edge\/community/' /etc/apk/repositories
-RUN apk update && apk add fzf bash
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --no-bash --no-fish --all
-
 ENV ZSH_CUSTOM=/root/my-zsh
 WORKDIR /root
 EXPOSE 80 443 2000 3000-3004 8080-8084 8443
-CMD echo 'docker run --rm --hostname devbox -v /var/tmp:/var/tmp -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.ssh:/root/.ssh:ro -v $PWD:/root/$(basename $PWD) -w /root/$(basename $PWD) -it itaccess/devbox zsh'
+CMD echo 'docker run --rm --hostname devbox-lite -v $HOME/.ssh:/root/.ssh:ro -v $PWD:/root/$(basename $PWD) -w /root/$(basename $PWD) -it itaccess/devbox-lite zsh'

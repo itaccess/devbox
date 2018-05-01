@@ -1,0 +1,22 @@
+{
+  "name": "devbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:devbox-lite && npm run build:devbox",
+    "build:devbox-lite": "docker build -t itaccess/devbox:lite -f docker/devbox-lite.Dockerfile .",
+    "build:devbox": "docker build -t itaccess/devbox -f docker/devbox.Dockerfile ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itaccess/devbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itaccess/devbox/issues"
+  },
+  "homepage": "https://github.com/itaccess/devbox#readme"
+}
