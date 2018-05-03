@@ -12,8 +12,6 @@ alias pfx='basename $(git symbolic-ref --short HEAD)'
 
 alias //='grt'
 
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,misc,coverage,.next}'
-
 ghcreate() {
   GITHUB_USER=$(git config --global --get github.user)
   if [ "$GITHUB_USER" != "" ]; then
@@ -61,7 +59,9 @@ alias npm="npm --no-git-tag-version --no-package-lock"
 
 alias todo='grep -nr TODO: . | sed "s/ *\/\///g" | sed "s/TODO://" | nl'
 
-alias tree="tree -AI node_modules"
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,misc,coverage,.next}'
+
+alias tree='tree -a -I ".bzr|CVS|.git|.hg|.svn|node_modules|misc|coverage|.next"'
 
 alias weather='curl wttr.in/edinburgh'
 
