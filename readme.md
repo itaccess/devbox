@@ -1,8 +1,8 @@
-# IT Acccess devbox
+# IT Acccess devbox
 
 A development environment in a box including vim/tmux/git and friends...
 
-## Purpose
+## Purpose
 
 1. test the viability of working inside a docker container as a primary development environment.
 2. make a lightweight docker container with essential tools that can be loaded onto remote servers for a more pleasant development experience.
