@@ -1,6 +1,0 @@
-plugins=(
-  z
-  docker
-  git
-  vi-mode
-)
