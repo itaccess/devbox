@@ -1,4 +1,4 @@
-FROM node:10.0-alpine
+FROM node:12.16-alpine
 
 RUN apk update && apk add \
   grep \
@@ -6,12 +6,16 @@ RUN apk update && apk add \
   curl \
   wget \
   git \
-  vim \
+  neovim \
   tree \
   zsh \
   zsh-vcs \
   tmux \
   openssh
+
+RUN npm i javascript-typescript-langserver -g
+RUN alias vim=nvim
+RUN alias vi=nvim
 
 # ADD https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim /root/.vim/autoload/plug.vim
 ADD .vimrc /root/.vimrc
