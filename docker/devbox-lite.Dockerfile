@@ -22,6 +22,10 @@ ADD dots/.vimrc /root/.vimrc
 ADD dots/init.vim /root/.config/nvim/init.vim
 RUN printf "\n\n\n\n" | vim +PlugInstall +qall
 
+# https://www.npmjs.com/package/coc.nvim#example-vim-configuration
+ADD dots/coc-extensions.package.json /root/.config/coc/extensions/package.json
+RUN cd /root/.config/coc/extensions && yarn
+
 # ENV ZSH_CUSTOM=/root/my-zsh
 WORKDIR /root
 EXPOSE 80 443 2000 3000-3004 8080-8084 8443
