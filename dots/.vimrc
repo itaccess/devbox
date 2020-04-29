@@ -14,12 +14,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'preservim/nerdtree'
 
 " Initialize plugin system
 call plug#end()
 
 syntax on
 colorscheme onedark
+
+" NerdTree config
+map <C-e> :NERDTreeToggle<CR>
 
 " inspired by https://www.npmjs.com/package/coc.nvim#example-vim-configuration
 """
