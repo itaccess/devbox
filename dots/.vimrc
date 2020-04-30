@@ -22,6 +22,12 @@ call plug#end()
 syntax on
 colorscheme onedark
 
+" Configure thin cursor in edit mode
+let &t_SI="\033[5 q" " start insert mode
+let &t_EI="\033[1 q" " end insert mode
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
+
 " NerdTree config
 map <C-e> :NERDTreeToggle<CR>
 

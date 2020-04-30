@@ -1,3 +1,8 @@
+FROM node:12.16-alpine AS vim-plugins
+
+ADD dots/.vimrc /root/.vimrc
+RUN sed '/plug#end/q' /root/.vimrc > /root/.vimrc.plug
+
 FROM node:12.16-alpine
 
 # base os packages
@@ -22,9 +27,10 @@ ADD dots/coc-extensions.package.json /root/.config/coc/extensions/package.json
 RUN cd /root/.config/coc/extensions && yarn
 
 # ADD https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim /root/.vim/autoload/plug.vim
-ADD dots/.vimrc /root/.vimrc
+COPY --from=vim-plugins /root/.vimrc.plug /root/.vimrc
 ADD dots/init.vim /root/.config/nvim/init.vim
 RUN printf "\n\n\n\n" | vim +PlugInstall +qall
+ADD dots/.vimrc /root/.vimrc
 
 # ENV ZSH_CUSTOM=/root/my-zsh
 WORKDIR /root
