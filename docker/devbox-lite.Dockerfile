@@ -17,9 +17,16 @@ RUN apk update && apk add \
   zsh \
   zsh-vcs \
   tmux \
+  tar \
+  gzip \
   openssh
 
-# add nvom alias
+RUN wget https://github.com/tmate-io/tmate/releases/download/2.4.0/tmate-2.4.0-static-linux-arm32v7.tar.xz \
+    && tar xf tmate-2.4.0-static-linux-arm32v7.tar.xz \
+    && mv tmate-2.4.0-static-linux-arm32v7/tmate /usr/bin \
+    && rm -rf tmate-2.4.0-static-linux-arm32v7*
+
+# add nvim alias
 RUN cd /usr/bin && ln ./nvim vim && cp vim vi
 
 # https://www.npmjs.com/package/coc.nvim#example-vim-configuration
