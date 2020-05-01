@@ -15,18 +15,25 @@ Plug 'joshdick/onedark.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'mbbill/undotree'
 
 " Initialize plugin system
 call plug#end()
 
 syntax on
 colorscheme onedark
+" far more sensible
 
 " Configure thin cursor in edit mode
 let &t_SI="\033[5 q" " start insert mode
 let &t_EI="\033[1 q" " end insert mode
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+
+nnoremap <silent> gu :UndotreeToggle<cr>
 
 " NerdTree config
 map <C-e> :NERDTreeToggle<CR>
