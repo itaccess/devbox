@@ -1,4 +1,4 @@
-FROM node:10.0-alpine
+FROM node:14.15-alpine
 
 RUN apk update && apk add \
   grep \
@@ -35,5 +35,5 @@ ADD my-zsh /root/my-zsh
 
 ENV ZSH_CUSTOM=/root/my-zsh
 WORKDIR /root
-EXPOSE 80 443 2000 3000-3004 8080-8084 8443
-CMD echo 'docker run --rm --hostname devbox-lite -v $HOME/.ssh:/root/.ssh:ro -v $PWD:/root/$(basename $PWD) -w /root/$(basename $PWD) -it itaccess/devbox:lite zsh'
+EXPOSE 80 443 1231-1234 2000 3000-3004 5000-5010 8080-8084 8443
+CMD echo 'docker run --rm --hostname devboxlite -v $HOME/.ssh:/root/.ssh:ro -v $PWD:/root/$(basename $PWD) -w /root/$(basename $PWD) -it itaccess/devbox:lite zsh'
