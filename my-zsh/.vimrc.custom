@@ -48,6 +48,9 @@ nnoremap <leader>p :pclose<cr>
 " delete the current buffer via moll/vim-bbye
 nnoremap <Leader>b :Bdelete<CR>
 
+" supress legacy snipmate parser message
+let g:snipMate = { 'snippet_version' : 1 }
+
 "Set up vim-grepper
 " Make ag the default tool. Open Quickfix window. Jump to first match
 " for browsing the input history
