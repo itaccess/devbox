@@ -1,4 +1,4 @@
-FROM node:10.0-alpine
+FROM node:12-alpine
 
 RUN apk update && apk add \
   grep \
@@ -7,15 +7,12 @@ RUN apk update && apk add \
   wget \
   git \
   vim \
+  neovim \
   tree \
   zsh \
   zsh-vcs \
   tmux \
   openssh
-
-# ADD https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim /root/.vim/autoload/plug.vim
-ADD .vimrc /root/.vimrc
-RUN printf "\n\n\n\n" | vim +PlugInstall +qall
 
 # https://github.com/robbyrussell/oh-my-zsh
 RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git /root/.oh-my-zsh
@@ -32,6 +29,10 @@ RUN sed -i '1i''source /root/my-zsh/plugins' /root/.zshrc
 
 ADD .tmux.conf /root/.tmux.conf
 ADD my-zsh /root/my-zsh
+
+# ADD https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim /root/.vim/autoload/plug.vim
+ADD .vimrc /root/.vimrc
+RUN printf "\n\n\n\n" | vim +PlugInstall +qall
 
 ENV ZSH_CUSTOM=/root/my-zsh
 WORKDIR /root

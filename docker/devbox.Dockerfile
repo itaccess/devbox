@@ -14,10 +14,7 @@ RUN apk update && apk add \
 RUN yarn global add \
   sir \
   serve \
-  ntl \
-  gren \
-  standard \
-  semistandard
+  gren
 
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --no-bash --no-fish --all
 

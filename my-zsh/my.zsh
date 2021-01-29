@@ -79,4 +79,36 @@ alias x='tmux a -d || tmux'
 
 alias vi='vim'
 
-plugins=(z git docker)
+plugins=(z git docker vi-mode)
+
+function expand-alias() {
+  zle _expand_alias
+  zle self-insert
+}
+zle -N expand-alias
+bindkey -M main '^ ' expand-alias
+
+typeset -a ealiases
+ealiases=()
+
+function ealias()
+{
+    alias $1
+    ealiases+=(${1%%\=*})
+}
+
+function expand-ealias()
+{
+    if [[ $LBUFFER =~ "\<(${(j:|:)ealiases})\$" ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle magic-space
+}
+
+zle -N expand-ealias
+
+bindkey -M viins ' '        expand-ealias
+bindkey -M viins '^ '       magic-space     # control-space to bypass completion
+bindkey -M isearch " "      magic-space     # normal space during searches
+
